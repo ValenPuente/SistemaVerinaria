@@ -1,0 +1,7 @@
+111,Jorge,000
+222,Luis,001
+333,Pedro,010
+444,Valentín,011
+555,Franco,111
+666,Agostina,110
+777,Gonzalo,101
