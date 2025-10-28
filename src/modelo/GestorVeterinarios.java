@@ -45,6 +45,6 @@ public class GestorVeterinarios {
         } catch(IOException e){ // si llegamos aquí es porque hubo un error al leer el archivo!!
             System.out.println("Error al leer el archivo de veterinarios: " + e.getMessage());
         }
-        return false; // significa que el veterinario no existe!!!
+        return false; // significa que el veterinario no existe!!!!
     }
 }
