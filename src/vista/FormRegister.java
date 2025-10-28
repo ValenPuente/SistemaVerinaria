@@ -15,6 +15,9 @@ public class FormRegister extends JFrame {
     private JButton btnRegistrase;
     private JButton btnIniciarSesion;
 
+    // creamos instancia de controladorVeterinarios para usar sus métodos ->
+    controlador.ControladorVeterinarios controladorVeterinarios = new controlador.ControladorVeterinarios();
+
     public FormRegister() {
         inicializar(); // metodo que se crea para inicializar la ventana
 
@@ -22,24 +25,26 @@ public class FormRegister extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // accíon que ocurre al presionar el botón de registrarse
-                // primero se debe validar si los datos ingresados son correctos o no -->
-                // recuperamos los datos ingresados por el usuario!
-                String idEmpleado = txtIdEmpleado.getText();
+                // recuperamos los datos ingresados por el usuario en la ventana con .getText()!! -->
+                String idEmpleado = txtIdEmpleado.getText(); // formato de texto!!
                 String nombre = txtNombre.getText();
                 String clave = txtClave.getText();
+                // llamamos al metodo del controladorVeterinarios para agregarlos al archivo txt!
+                controladorVeterinarios.autenticarVeterinario(idEmpleado, nombre, clave);
             }
         });
+
+        // botón de iniciar sesión ->
         btnIniciarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // accíon que ocurre al presionar el botón de iniciar sesión
-                // debemos cerrar la ventana y abrir una nueva que se de inicio de sesión -->
-                dispose(); // cierra la ventana actual
+                // debemos cerrar la ventana y abrir una nueva que sea destinada al inicio de sesión -->
+                dispose(); // cierra la ventana actual de register!!!
                 // creamos instancia de la clase FormSignIn -->
                 FormSignIn formSignIn = new FormSignIn();
                 // ponemos visibilidad en true ->
                 formSignIn.setVisible(true);
-
             }
         });
     }
