@@ -3,11 +3,8 @@ import vista.FormRegister;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        // creamos instancia de clase de FormRegister ->
+        // creamos instancia de clase de FormRegister y su visibilidad en True -->
         FormRegister formulario = new FormRegister();
         formulario.setVisible(true);
-        // en esta clase debemos crear lo siguiente -->
-
-
     }
 }

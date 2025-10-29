@@ -9,7 +9,6 @@ import java.io.IOException;
 public class GestorVeterinarios {
     // clase encargada de leer e interactuar con el archivo de veterinarios!! -->
 
-
     public boolean agregarVeterinarios(Veterinario vet) { // recibe una instancia de veterinario!
 
         // Construimos la línea que se va a escribir en el archivo, en el formato establecido!
@@ -47,4 +46,6 @@ public class GestorVeterinarios {
         }
         return false; // significa que el veterinario no existe!!!!
     }
+
+
 }

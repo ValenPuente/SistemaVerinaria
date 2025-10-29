@@ -30,7 +30,8 @@ public class FormRegister extends JFrame {
                 String nombre = txtNombre.getText();
                 String clave = txtClave.getText();
                 // llamamos al metodo del controladorVeterinarios para agregarlos al archivo txt!
-                controladorVeterinarios.autenticarVeterinario(idEmpleado, nombre, clave);
+                String retorno = controladorVeterinarios.registrarVeterinario(idEmpleado, nombre, clave);
+
             }
         });
 
@@ -45,6 +46,7 @@ public class FormRegister extends JFrame {
                 FormSignIn formSignIn = new FormSignIn();
                 // ponemos visibilidad en true ->
                 formSignIn.setVisible(true);
+
             }
         });
     }

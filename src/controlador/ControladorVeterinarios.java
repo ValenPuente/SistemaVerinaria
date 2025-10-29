@@ -13,7 +13,8 @@ public class ControladorVeterinarios {
         // constructor vacío!!
     }
 
-    public String autenticarVeterinario(String idEmpleado, String nombre, String clave) { // recine como
+
+    public String registrarVeterinario(String idEmpleado, String nombre, String clave) { // recine como
         // parámetro los datos ingresados por el usuario!
         // primero verificamos que los datos no estén vacíos!!
         if (idEmpleado.isEmpty() || nombre.isEmpty() || clave.isEmpty()) {
@@ -37,8 +38,23 @@ public class ControladorVeterinarios {
         } else {
             return "ERROR: El veterinario ya está registrado";
         }
+    }
+    public String iniciarSesionVeterinario(String idEmpleado, String nombre, String clave) {
+        // metodo para el inicio de sesión de los veterinarios!!
+        // primero verificamos que los datos no estén vacíos!!
+        if (idEmpleado.isEmpty() || nombre.isEmpty() || clave.isEmpty()) {
+            return "ERROR: Todos los campos son obligatorios.";
+        }
 
-
+        // ahora usamos el metodo del gestorVeterinarios para verificar si el veterinario existe!!
+        Veterinario vet = new Veterinario(idEmpleado, nombre, clave);
+        if (gestorVeterinarios.verificarVeterinarioExistente(vet)) {
+            return "Inicio de sesión exitoso"; // retornamos este String a la capa vista!!
+        } else {
+            return "ERROR: Credenciales incorrectas o veterinario no registrado";
+        }
     }
 
+
 }
+
