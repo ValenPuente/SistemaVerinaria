@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Duenio extends Persona {
     // tiene como atributos propios -->
-    ArrayList<Mascota> mascotas = new ArrayList<>(); // relación 1 a n con la clase Mascota, asociación
+    // ArrayList<Mascota> mascotas = new ArrayList<>(); // relación 1 a n con la clase Mascota, asociación
     // bidireccional!
     private String numTelefono;
     private String email;
@@ -16,8 +16,8 @@ public class Duenio extends Persona {
     }
 
     // metodo para agregar una mascota al dueño ->
-    public void agregarMascota(Mascota mascota){ // recibimos mascota por parámetro
-        mascotas.add(mascota);
-    }
+    //public void agregarMascota(Mascota mascota){ // recibimos mascota por parámetro
+      //  mascotas.add(mascota);
+    //}
 
 }

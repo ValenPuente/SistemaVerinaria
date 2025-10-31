@@ -1,14 +1,14 @@
 package modelo;
 
-public abstract class Mascota {
+public class Mascota {
     // clase padre de las mascotas que heredarán los atributos -->
     protected String nombre;
-    protected int edad;
+    protected String edad;
     protected Duenio duenio; // relación de asociación bidireccional 1 a n con la clase Dueño!
 
 
     // constructor de la clase mascota ->
-    public Mascota(String nombre, int edad){
+    public Mascota(String nombre, String edad, Duenio duenio){
         this.nombre = nombre;
         this.edad = edad;
         this.duenio = duenio;
@@ -18,10 +18,10 @@ public abstract class Mascota {
     public String getNombre() {
         return nombre;
     }
-    public int getEdad() {
+
+    public String getEdad() {
         return edad;
     }
-    public Duenio getDuenio() {
-        return duenio;
-    }
+
+    public Duenio getDuenio() { return duenio; }
 }

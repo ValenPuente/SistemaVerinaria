@@ -1,8 +1,11 @@
 package vista;
 
+import controlador.ControladorConsultas;
 import modelo.Tratamiento;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FormMain extends JFrame{
 
@@ -20,20 +23,33 @@ public class FormMain extends JFrame{
     private JButton btnConfirmarConsulta;
     private JLabel lblMensajeRegistroConsulta;
 
+    // creamos instancia de ControladorConsulta -->
+    ControladorConsultas controladorConsultas = new ControladorConsultas();
 
 
     public FormMain() {
         inicializar();
         mostrarEnumTratamiento();
 
+        btnConfirmarConsulta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // acción que pasa al presionar el botón Confirmar!
+                // recuperamos los datos de los text -->
+                String nombreDuenio = txtNombre.getText();
+                String apellidoDuenio = txtApellido.getText();
+                String tipoMascota = txtTipoMascota.getText();
+                String nombreMascota = txtNombreMascota.getText();
+                String edadMascota = txtEdadMascota.getText();
+                String problematica = txtProblematica.getText();
+                Tratamiento tratamientoSeleccionado = (Tratamiento) boxTratamiento.getSelectedItem();
+                // tratamientoSeleccionado debe ser del tipo enum Tratamiento!!
 
-        // métodos al presionar botones se agregarán aquí!!
+                // llamamos al metodo del controladorConsultas para registrar la consulta
+                controladorConsultas.registrarConsulta(nombreDuenio, apellidoDuenio, tipoMascota, nombreMascota, edadMascota, problematica, tratamientoSeleccionado);
 
-
-
-
-
-
+            }
+        });
     }
 
     public void mostrarEnumTratamiento(){

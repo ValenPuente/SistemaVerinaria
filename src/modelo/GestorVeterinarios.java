@@ -19,7 +19,7 @@ public class GestorVeterinarios {
             return false;
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("veterinariosLogs.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/datos/veterinariosLogs.txt"))) {
             writer.write(linea1); // escribimos la línea en el archivo!!
             // y añadimos un salto de línea al final para el próximo registro
             writer.newLine();
@@ -30,7 +30,7 @@ public class GestorVeterinarios {
         }
 
         String linea2 = vet.getNombre() + "," + vet.getApellido();
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("veterinarios.txt"))) {
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("src/datos/veterinarios.txt"))) {
             writer.write(linea2); // escribimos la línea en el archivo!!
             // y añadimos un salto de línea al final para el próximo registro dentro del txt!!
             writer.newLine();
@@ -45,7 +45,7 @@ public class GestorVeterinarios {
         // metodo que verifica si un veterinario ya se encuentra registrado en el archivo!!
         // tomamos solo los datos del txt que guarda los logs de los veterinarios!!
         String veterinarioABuscar = veterinario.getIdEmpleado() + "," + veterinario.getNombre() + "," + veterinario.getClave();
-        try (BufferedReader reader = new BufferedReader(new FileReader("veterinariosLogs.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/datos/veterinariosLogs.txt"))){
         // dentro del () tendrmos la acción que nos puede traer problemas!
             String linea; // tomará cada línea del archivo!!
             while ((linea = reader.readLine()) != null) {
