@@ -15,15 +15,7 @@ public class ControladorConsultas {
     }
     // metodo que registra la consulta al txt de consultas -->
 
-    public String registrarConsulta(String nombreDuenio, String apellidoDuenio, String tipoMascota, String nombreMascota, String edadMascota, String problematica, Tratamiento tratamientoSeleccionado){
-    // recibimos como parámetro todos los datos que se ponen en la ventana
+    // public String registrarConsulta(String nombreDuenio, String apellidoDuenio, String tipoMascota, String nombreMascota, String edadMascota, String problematica, Tratamiento tratamientoSeleccionado) {
+        // recibimos como parámetro todos los datos que se ponen en la ventana
         // formamos las instancias de las clases correspondientes -->
-        Duenio duenio = new Duenio(nombreDuenio, apellidoDuenio
-
     }
-
-
-
-
-
-}

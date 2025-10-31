@@ -22,6 +22,8 @@ public class FormMain extends JFrame{
     private JComboBox boxTratamiento;
     private JButton btnConfirmarConsulta;
     private JLabel lblMensajeRegistroConsulta;
+    private JTextField txtTelefono;
+    private JTextField txtEmail;
 
     // creamos instancia de ControladorConsulta -->
     ControladorConsultas controladorConsultas = new ControladorConsultas();
