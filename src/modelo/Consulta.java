@@ -10,14 +10,16 @@ public class Consulta {
     private Veterinario veterinario;
     private Mascota mascota;
     private String fecha; // fecha de la consulta
+    private String condicion; // problema que presenta la mascota en la consulta
     private Tratamiento tratamiento; // enum con el tratamiento dado en la consulta, que contiene
     // el coste!
 
     // constructor de la clase consulta ->
-    public Consulta(Veterinario veterinario, Mascota mascota, String fecha, Tratamiento tratamiento) {
+    public Consulta(Veterinario veterinario, Mascota mascota, String fecha, String condicion, Tratamiento tratamiento) {
         this.veterinario = veterinario;
         this.mascota = mascota;
         this.fecha = fecha;
+        this.condicion = condicion;
         this.tratamiento = tratamiento;
     }
 

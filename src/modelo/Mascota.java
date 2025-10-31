@@ -2,19 +2,22 @@ package modelo;
 
 public class Mascota {
     // clase padre de las mascotas que heredarán los atributos -->
-    protected String nombre;
-    protected String edad;
-    protected Duenio duenio; // relación de asociación bidireccional 1 a n con la clase Dueño!
+    private String id;
+    private String tipo;
+    private String nombre;
+    private String edad;
+    private Duenio duenio; // relación de asociación bidireccional 1 a n con la clase Dueño!
 
 
     // constructor de la clase mascota ->
-    public Mascota(String nombre, String edad, Duenio duenio){
+    public Mascota(String tipo, String nombre, String edad, Duenio duenio){
         this.nombre = nombre;
         this.edad = edad;
         this.duenio = duenio;
     }
 
     // métodos getters ->
+    public String getTipo() { return tipo;}
     public String getNombre() {
         return nombre;
     }

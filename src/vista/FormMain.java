@@ -40,15 +40,26 @@ public class FormMain extends JFrame{
                 // recuperamos los datos de los text -->
                 String nombreDuenio = txtNombre.getText();
                 String apellidoDuenio = txtApellido.getText();
+                String numTelefono = txtTelefono.getText();
+                String email = txtEmail.getText();
                 String tipoMascota = txtTipoMascota.getText();
                 String nombreMascota = txtNombreMascota.getText();
                 String edadMascota = txtEdadMascota.getText();
-                String problematica = txtProblematica.getText();
+                String condicion = txtProblematica.getText();
                 Tratamiento tratamientoSeleccionado = (Tratamiento) boxTratamiento.getSelectedItem();
                 // tratamientoSeleccionado debe ser del tipo enum Tratamiento!!
 
                 // llamamos al metodo del controladorConsultas para registrar la consulta
-                controladorConsultas.registrarConsulta(nombreDuenio, apellidoDuenio, tipoMascota, nombreMascota, edadMascota, problematica, tratamientoSeleccionado);
+                String retorno = controladorConsultas.registrarConsulta(nombreDuenio, apellidoDuenio, numTelefono, email, tipoMascota, nombreMascota, edadMascota, condicion, tratamientoSeleccionado);
+                lblMensajeRegistroConsulta.setText(retorno);
+                if (retorno.equals("Consulta registrada exitosamente.")){
+                    // ahora cerramos la ventana si se registró la consulta excitosamente -->
+                    dispose();
+                    // y tenemos que abrir una nueva vetana para mostrar el resumen de la consulta -->
+                    FormPagoConsulta formPagoConsulta = new FormPagoConsulta();
+                    formPagoConsulta.setVisible(true);
+
+                }
 
             }
         });
@@ -71,5 +82,4 @@ public class FormMain extends JFrame{
         setSize(600, 400);
         setLocationRelativeTo(null);
     }
-
 }

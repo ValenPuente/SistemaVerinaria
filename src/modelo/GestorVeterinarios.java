@@ -58,4 +58,35 @@ public class GestorVeterinarios {
         }
         return false; // significa que el veterinario no existe!!!!
     }
+
+    public Veterinario elegirVeterinario(){
+        // metodo que elige un veterinario aleatoriamente del txt de veterinarios!!
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/datos/veterinariosLogs.txt"))){
+            String linea;
+            int contador = 0;
+            while ((linea = reader.readLine()) != null) {
+                contador++;
+            }
+            // generamos un número aleatorio entre 0 y contador-1
+            int numeroAleatorio = (int) (Math.random() * contador);
+            // volvemos a leer el archivo para llegar a la línea del número aleatorio
+            reader.close(); // cerramos el reader anterior
+            BufferedReader reader2 = new BufferedReader(new FileReader("src/datos/veterinariosLogs.txt"));
+            int indiceActual = 0;
+            while ((linea = reader2.readLine()) != null) {
+                if (indiceActual == numeroAleatorio) {
+                    // separamos los datos de la línea para crear la instancia de Veterinario
+                    String[] datos = linea.split(",");
+                    Veterinario vetSeleccionado = new Veterinario(datos[0], datos[1], "", datos[2]);
+                    reader2.close();
+                    return vetSeleccionado;
+                }
+                indiceActual++;
+            }
+            reader2.close();
+        } catch(IOException e){
+            System.out.println("Error al leer el archivo de veterinarios: " + e.getMessage());
+        }
+        return null; // en caso de error o si no se encuentra ningún veterinario
+    }
 }

@@ -15,6 +15,15 @@ public class Duenio extends Persona {
         this.email = email;
     }
 
+    //getters ->
+    public String getNumTelefono() {
+        return numTelefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     // metodo para agregar una mascota al dueño ->
     //public void agregarMascota(Mascota mascota){ // recibimos mascota por parámetro
       //  mascotas.add(mascota);
