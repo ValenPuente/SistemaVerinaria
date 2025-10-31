@@ -5,7 +5,6 @@ import java.io.FileWriter;
 
 public class GestorConsulta {
 
-
     // metodo para generar día aleatorio del día -->
     public String generarFechaAleatoria(){
         // generamos fecha aleatoria válida a partir del día actual ->

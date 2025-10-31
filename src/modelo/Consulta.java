@@ -4,7 +4,7 @@ public class Consulta {
     // clase que surge de la relación muchos a muchos entre Veterinario y Mascota! Un veterinario puede tener
     // muchas mascotas a su cargo y una mascota puede ser atendida por varios veterinarios! Para guardar datos
     // extra de esa relación de asociación muchos a muchos creamos esta clase intermedia!! Esto aplica el
-    // principio GRASP de fabricación pura...
+    // principio GRASP de fabricación pura!!
 
     // atributos de la clase consulta ->
     private Veterinario veterinario;
