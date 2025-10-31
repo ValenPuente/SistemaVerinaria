@@ -1,5 +1,7 @@
 package vista;
 
+import modelo.Tratamiento;
+
 import javax.swing.*;
 
 public class FormMain extends JFrame{
@@ -16,12 +18,14 @@ public class FormMain extends JFrame{
     private JTextField txtProblematica;
     private JComboBox boxTratamiento;
     private JButton btnConfirmarConsulta;
-    private JLabel lblMensajeRegistroCoinsulta;
+    private JLabel lblMensajeRegistroConsulta;
 
 
 
     public FormMain() {
         inicializar();
+        mostrarEnumTratamiento();
+
 
         // métodos al presionar botones se agregarán aquí!!
 
@@ -32,6 +36,15 @@ public class FormMain extends JFrame{
 
     }
 
+    public void mostrarEnumTratamiento(){
+        boxTratamiento.setModel(new DefaultComboBoxModel<>(Tratamiento.values()));
+
+        // (Opcional) acción al seleccionar:
+        boxTratamiento.addActionListener(e -> {
+            Tratamiento seleccionado = (Tratamiento) boxTratamiento.getSelectedItem();
+            System.out.println("Seleccionaste: " + seleccionado);
+        });
+    }
 
 
     public void inicializar() {
