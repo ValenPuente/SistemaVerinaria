@@ -10,8 +10,15 @@ public class FormMain extends JFrame{
     private JPanel pnlCentral;
     private JTextField txtNombre;
     private JTextField txtApellido;
-    private JTextField textField1;
-    private JTextField textField2;
+    private JTextField txtTipoMascota;
+    private JTextField txtNombreMascota;
+    private JTextField txtEdadMascota;
+    private JTextField txtProblematica;
+    private JComboBox boxTratamiento;
+    private JButton btnConfirmarConsulta;
+    private JLabel lblMensajeRegistroCoinsulta;
+
+
 
     public FormMain() {
         inicializar();
