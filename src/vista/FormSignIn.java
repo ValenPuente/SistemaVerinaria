@@ -16,6 +16,7 @@ public class FormSignIn extends JFrame {
     private JTextField txtClave;
     private JButton btnInicioDeSesion;
     private JLabel iblMensaje;
+    private JTextField txtApellido;
 
     // creamos instancia de controladorVeterinarios para usar sus métodos ->
     ControladorVeterinarios controladorVeterinarios = new ControladorVeterinarios();
@@ -29,10 +30,23 @@ public class FormSignIn extends JFrame {
                 // recuperamos los datos ingresados por el veterinario -->
                 String idEmpleado = txtIdEmpleado.getText();
                 String nombre = txtNombre.getText();
+                String apellido = txtApellido.getText();
                 String clave = txtClave.getText();
                 // llamamos al controlador para verificar si el inicio de sesión es correcto!!
-                String retorno = controladorVeterinarios.iniciarSesionVeterinario(idEmpleado, nombre, clave);
+                String retorno = controladorVeterinarios.iniciarSesionVeterinario(idEmpleado, nombre, apellido, clave);
                 // mostramos el resultado en un cuadro de diálogo ->
+                iblMensaje.setText(retorno);
+
+                // ahora si el retorno fue exitoso, podemos proceder a abrir la ventana principal
+                // de la aplicación!!
+                if (retorno.equals("Inicio de sesión exitoso")) {
+                    // cerramos la ventana actual
+                    dispose();
+                    // abrimos la ventana principal de la aplicación
+                    FormMain formMain = new FormMain();
+                    formMain.setVisible(true);
+                }
+                // si no fue exitoso, el mensaje de error ya se mostró en iblMensaje!!
 
             }
         });

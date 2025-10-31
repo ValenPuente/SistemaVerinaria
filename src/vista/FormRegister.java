@@ -14,6 +14,8 @@ public class FormRegister extends JFrame {
     private JTextField txtClave;
     private JButton btnRegistrase;
     private JButton btnIniciarSesion;
+    private JLabel lblMensaje;
+    private JTextField txtApellido;
 
     // creamos instancia de controladorVeterinarios para usar sus métodos ->
     controlador.ControladorVeterinarios controladorVeterinarios = new controlador.ControladorVeterinarios();
@@ -28,10 +30,19 @@ public class FormRegister extends JFrame {
                 // recuperamos los datos ingresados por el usuario en la ventana con .getText()!! -->
                 String idEmpleado = txtIdEmpleado.getText(); // formato de texto!!
                 String nombre = txtNombre.getText();
+                String apellido = txtApellido.getText();
                 String clave = txtClave.getText();
                 // llamamos al metodo del controladorVeterinarios para agregarlos al archivo txt!
-                String retorno = controladorVeterinarios.registrarVeterinario(idEmpleado, nombre, clave);
-
+                String retorno = controladorVeterinarios.registrarVeterinario(idEmpleado, nombre, apellido, clave);
+                // lo mostramos en un label ->
+                lblMensaje.setText(retorno);
+                if (lblMensaje.getText().equals("Veterinario registrado exitosamente")) {
+                    // cerramos ventana actual -->
+                    dispose();
+                    // abrimos ventana principal -->
+                    FormMain formMain = new FormMain();
+                    formMain.setVisible(true); // en true para que se vea la ventana!!
+                }
             }
         });
 
@@ -50,7 +61,6 @@ public class FormRegister extends JFrame {
             }
         });
     }
-
 
     public void inicializar() { // esto es para inicializar la ventana, se pone siempre!
         setContentPane(pnlPrincipal);

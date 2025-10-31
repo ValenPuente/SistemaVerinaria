@@ -12,16 +12,27 @@ public class GestorVeterinarios {
     public boolean agregarVeterinarios(Veterinario vet) { // recibe una instancia de veterinario!
 
         // Construimos la línea que se va a escribir en el archivo, en el formato establecido!
-        String linea = vet.getIdEmpleado() + "," + vet.getNombre() + "," + vet.getClave();
+        String linea1 = vet.getIdEmpleado() + "," + vet.getNombre() + "," + vet.getClave();
 
         // Si ya existe, no agregamos
         if (verificarVeterinarioExistente(vet)) {
             return false;
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("veterinarios.txt", true))) {
-            writer.write(linea); // escribimos la línea en el archivo!!
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("veterinariosLogs.txt"))) {
+            writer.write(linea1); // escribimos la línea en el archivo!!
             // y añadimos un salto de línea al final para el próximo registro
+            writer.newLine();
+            // no ponemos return true acá porque queremos agregarlo a otro txt también!!
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo de veterinarios: " + e.getMessage());
+            return false;
+        }
+
+        String linea2 = vet.getNombre() + "," + vet.getApellido();
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("veterinarios.txt"))) {
+            writer.write(linea2); // escribimos la línea en el archivo!!
+            // y añadimos un salto de línea al final para el próximo registro dentro del txt!!
             writer.newLine();
             return true;
         } catch (IOException e) {
@@ -32,8 +43,9 @@ public class GestorVeterinarios {
 
     public boolean verificarVeterinarioExistente(Veterinario veterinario) {
         // metodo que verifica si un veterinario ya se encuentra registrado en el archivo!!
+        // tomamos solo los datos del txt que guarda los logs de los veterinarios!!
         String veterinarioABuscar = veterinario.getIdEmpleado() + "," + veterinario.getNombre() + "," + veterinario.getClave();
-        try (BufferedReader reader = new BufferedReader(new FileReader("veterinarios.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("veterinariosLogs.txt"))){
         // dentro del () tendrmos la acción que nos puede traer problemas!
             String linea; // tomará cada línea del archivo!!
             while ((linea = reader.readLine()) != null) {
@@ -46,6 +58,4 @@ public class GestorVeterinarios {
         }
         return false; // significa que el veterinario no existe!!!!
     }
-
-
 }
