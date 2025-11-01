@@ -43,6 +43,5 @@ public class ControladorConsultas {
         } else {
             return "ERROR: No se pudo registrar la consulta.";
         }
-
     }
 }

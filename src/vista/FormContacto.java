@@ -31,6 +31,7 @@ public class FormContacto extends JFrame{
                 formMain.setVisible(true); // en true para que se vea la ventana!!
             }
         });
+
         btnTelefono.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
