@@ -3,8 +3,8 @@ package modelo;
 public class Veterinario extends Persona {
     // clase que modela la entidad de los veterinarios!!
     // atributos
-    private final String idEmpleado; // lo ponemos en final porque no queremos que cambie!
-    private final String clave; // lo ponemos en final porque no queremos que cambie!
+    private String idEmpleado; // lo ponemos en final porque no queremos que cambie!
+    private String clave; // lo ponemos en final porque no queremos que cambie!
 
 
     // constructor ->
@@ -12,6 +12,10 @@ public class Veterinario extends Persona {
         super(nombre, apellido); // llama al constructor de la clase padre!!
         this.idEmpleado = idEmpleado;
         this.clave = clave;
+    }
+
+    public Veterinario(String nombre, String apellido) {
+        super(nombre, apellido);
     }
 
     // getters ->

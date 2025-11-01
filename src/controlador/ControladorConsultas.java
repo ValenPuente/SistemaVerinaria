@@ -31,6 +31,7 @@ public class ControladorConsultas {
 
         // ahora generar una fecha de manera aleatoria que sea válida a partir del día actual ->
         String fechaConsulta = gestorConsulta.generarFechaAleatoria();
+
         // creamos instancia de consulta -->
         Consulta consulta = new Consulta(vetAsignado, mascota, fechaConsulta, condicion, tratamientoSeleccionado);
 

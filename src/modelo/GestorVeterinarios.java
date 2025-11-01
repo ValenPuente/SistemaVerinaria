@@ -12,7 +12,7 @@ public class GestorVeterinarios {
     public boolean agregarVeterinarios(Veterinario vet) { // recibe una instancia de veterinario!
 
         // Construimos la línea que se va a escribir en el archivo, en el formato establecido!
-        String linea1 = vet.getIdEmpleado() + "," + vet.getNombre() + "," + vet.getClave();
+        String linea1 = vet.getIdEmpleado() + "," + vet.getNombre() + "," + vet.getApellido() + "," + vet.getClave();
 
         // Si ya existe, no agregamos
         if (verificarVeterinarioExistente(vet)) {
@@ -44,7 +44,7 @@ public class GestorVeterinarios {
     public boolean verificarVeterinarioExistente(Veterinario veterinario) {
         // metodo que verifica si un veterinario ya se encuentra registrado en el archivo!!
         // tomamos solo los datos del txt que guarda los logs de los veterinarios!!
-        String veterinarioABuscar = veterinario.getIdEmpleado() + "," + veterinario.getNombre() + "," + veterinario.getClave();
+        String veterinarioABuscar = veterinario.getIdEmpleado() + "," + veterinario.getNombre() + "," + veterinario.getApellido() + "," + veterinario.getClave();
         try (BufferedReader reader = new BufferedReader(new FileReader("src/datos/veterinariosLogs.txt"))){
         // dentro del () tendrmos la acción que nos puede traer problemas!
             String linea; // tomará cada línea del archivo!!
@@ -61,7 +61,7 @@ public class GestorVeterinarios {
 
     public Veterinario elegirVeterinario(){
         // metodo que elige un veterinario aleatoriamente del txt de veterinarios!!
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/datos/veterinariosLogs.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/datos/veterinarios.txt"))){
             String linea;
             int contador = 0;
             while ((linea = reader.readLine()) != null) {
@@ -71,15 +71,16 @@ public class GestorVeterinarios {
             int numeroAleatorio = (int) (Math.random() * contador);
             // volvemos a leer el archivo para llegar a la línea del número aleatorio
             reader.close(); // cerramos el reader anterior
-            BufferedReader reader2 = new BufferedReader(new FileReader("src/datos/veterinariosLogs.txt"));
+            BufferedReader reader2 = new BufferedReader(new FileReader("src/datos/veterinarios.txt"));
             int indiceActual = 0;
             while ((linea = reader2.readLine()) != null) {
                 if (indiceActual == numeroAleatorio) {
                     // separamos los datos de la línea para crear la instancia de Veterinario
                     String[] datos = linea.split(",");
-                    Veterinario vetSeleccionado = new Veterinario(datos[0], datos[1], "", datos[2]);
+                    Veterinario vetSeleccionado = new Veterinario(datos[0], datos[1]);
                     reader2.close();
-                    return vetSeleccionado;
+                    return vetSeleccionado; // retornamos el veterinario creada con nombre y apellido
+                    // solamente!
                 }
                 indiceActual++;
             }
@@ -88,5 +89,22 @@ public class GestorVeterinarios {
             System.out.println("Error al leer el archivo de veterinarios: " + e.getMessage());
         }
         return null; // en caso de error o si no se encuentra ningún veterinario
+    }
+
+
+    public boolean validaridEmpleado(String idEmpleado) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/datos/veterinariosLogs.txt"))) {
+            // dentro del () tendrmos la acción que nos puede traer problemas!
+            String linea; // tomará cada línea del archivo!!
+            while ((linea = reader.readLine()) != null) {
+                String[] datos = linea.split(","); // dividimos la línea en partes
+                if (datos[0].equals(idEmpleado)) {
+                    return false; // veterinario ya existe
+                }
+            }
+        } catch (IOException e) { // si llegamos aquí es porque hubo un error al leer el archivo!!
+            System.out.println("Error al leer el archivo de veterinarios: " + e.getMessage());
+        }
+        return true;
     }
 }

@@ -37,6 +37,8 @@ public class FormSignIn extends JFrame {
                 // mostramos el resultado en un cuadro de diálogo ->
                 iblMensaje.setText(retorno);
 
+
+
                 // ahora si el retorno fue exitoso, podemos proceder a abrir la ventana principal
                 // de la aplicación!!
                 if (retorno.equals("Inicio de sesión exitoso")) {

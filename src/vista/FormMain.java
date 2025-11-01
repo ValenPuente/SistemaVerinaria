@@ -52,13 +52,22 @@ public class FormMain extends JFrame{
                 // llamamos al metodo del controladorConsultas para registrar la consulta
                 String retorno = controladorConsultas.registrarConsulta(nombreDuenio, apellidoDuenio, numTelefono, email, tipoMascota, nombreMascota, edadMascota, condicion, tratamientoSeleccionado);
                 lblMensajeRegistroConsulta.setText(retorno);
+
+
+                // esperamos unos segundos para que el usuario pueda ver el mensaje de confirmación
+                try {
+                    Thread.sleep(2000); // pausa de 2 segundos (2000 milisegundos)
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+
+
                 if (retorno.equals("Consulta registrada exitosamente.")){
                     // ahora cerramos la ventana si se registró la consulta excitosamente -->
                     dispose();
                     // y tenemos que abrir una nueva vetana para mostrar el resumen de la consulta -->
-                    FormPagoConsulta formPagoConsulta = new FormPagoConsulta();
-                    formPagoConsulta.setVisible(true);
-
+                    FormPago formPago= new FormPago();
+                    formPago.setVisible(true);
                 }
 
             }

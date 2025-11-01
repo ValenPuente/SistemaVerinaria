@@ -2,7 +2,6 @@ package modelo;
 
 public class Mascota {
     // clase padre de las mascotas que heredarán los atributos -->
-    private String id;
     private String tipo;
     private String nombre;
     private String edad;
@@ -11,6 +10,7 @@ public class Mascota {
 
     // constructor de la clase mascota ->
     public Mascota(String tipo, String nombre, String edad, Duenio duenio){
+        this.tipo = tipo;
         this.nombre = nombre;
         this.edad = edad;
         this.duenio = duenio;
@@ -18,6 +18,7 @@ public class Mascota {
 
     // métodos getters ->
     public String getTipo() { return tipo;}
+
     public String getNombre() {
         return nombre;
     }

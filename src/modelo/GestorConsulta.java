@@ -1,6 +1,8 @@
 package modelo;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 
 public class GestorConsulta {
@@ -31,5 +33,25 @@ public class GestorConsulta {
             System.out.println("Error al escribir en el archivo de consultas: " + e.getMessage());
             return false; // hubo un error al guardar la consulta!!
         }
+    }
+
+    public Tratamiento obtenerUltimoTratamiento(){
+        // metodo que obtiene el último tratamiento registrado en el txt de consultas ->
+        String ultimaLinea = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/datos/consultas.txt"))){
+            String linea;
+            while ((linea = reader.readLine()) != null){
+                ultimaLinea = linea; // al finalizar el while, ultimaLinea tendrá la última línea del archivo!!
+            }
+            if (ultimaLinea != null){
+                String[] partes = ultimaLinea.split(","); // devuelve una lista donde cada índice es un
+                // campo/atributo del registro de consulta!!
+                String tratamientoStr = partes[5]; // el tratamiento está en la posición 5 del array!!!
+                return Tratamiento.valueOf(tratamientoStr); // convertimos el String a enum Tratamiento!!
+            }
+        } catch (java.io.IOException e){
+            System.out.println("Error al leer el archivo de consultas: " + e.getMessage());
+        }
+        return null; // si no hay consultas o hubo un error, devolvemos null!!
     }
 }

@@ -1,5 +1,7 @@
 package vista;
 
+import controlador.ControladorVeterinarios;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +20,7 @@ public class FormRegister extends JFrame {
     private JTextField txtApellido;
 
     // creamos instancia de controladorVeterinarios para usar sus métodos ->
-    controlador.ControladorVeterinarios controladorVeterinarios = new controlador.ControladorVeterinarios();
+    ControladorVeterinarios controladorVeterinarios = new ControladorVeterinarios();
 
     public FormRegister() {
         inicializar(); // metodo que se crea para inicializar la ventana
@@ -36,6 +38,14 @@ public class FormRegister extends JFrame {
                 String retorno = controladorVeterinarios.registrarVeterinario(idEmpleado, nombre, apellido, clave);
                 // lo mostramos en un label ->
                 lblMensaje.setText(retorno);
+
+                try {
+                    Thread.sleep(5000); // pausa de 5 segundos (5000 milisegundos)
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+
+
                 if (lblMensaje.getText().equals("Veterinario registrado exitosamente")) {
                     // cerramos ventana actual -->
                     dispose();
