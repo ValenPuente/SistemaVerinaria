@@ -5,13 +5,13 @@ import modelo.PagoPayPal;
 import modelo.PagoTarjetaCredito;
 import modelo.Tratamiento;
 import modelo.GestorConsulta;
-import modelo.GestorFactura;
+import modelo.GestorPago;
 
 public class ControladorPago {
 
     // creamos instancia de gestorConsulta -->
     GestorConsulta gestorConsulta = new GestorConsulta();
-    GestorFactura gestorFactura = new GestorFactura();
+    GestorPago gestorFactura = new GestorPago();
 
     // metodo para procesar pago por Paypal ->
 

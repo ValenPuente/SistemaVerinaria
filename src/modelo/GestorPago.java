@@ -1,6 +1,6 @@
 package modelo;
 
-public class GestorFactura {
+public class GestorPago {
 
     public String pagar(IPagable metodoPago, Tratamiento tratamiento){
         // recibimos como parámetro un objeto del tipo interfaz IPagable

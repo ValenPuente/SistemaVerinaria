@@ -44,21 +44,45 @@ public class GestorConsulta {
         }
     }
 
-    public Tratamiento obtenerUltimoTratamiento(){
+    public Tratamiento obtenerUltimoTratamiento() {
         // metodo que obtiene el último tratamiento registrado en el txt de consultas ->
         String ultimaLinea = null;
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/datos/consultas.txt"))){
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/datos/consultas.txt"))) {
             String linea;
-            while ((linea = reader.readLine()) != null){
+            while ((linea = reader.readLine()) != null) {
                 ultimaLinea = linea; // al finalizar el while, ultimaLinea tendrá la última línea del archivo!!
             }
-            if (ultimaLinea != null){
+            if (ultimaLinea != null) {
                 String[] partes = ultimaLinea.split(","); // devuelve una lista donde cada índice es un
                 // campo/atributo del registro de consulta!!
                 String tratamientoStr = partes[5]; // el tratamiento está en la posición 5 del array!!!
                 return Tratamiento.valueOf(tratamientoStr); // convertimos el String a enum Tratamiento!!
             }
-        } catch (java.io.IOException e){
+        } catch (java.io.IOException e) {
+            System.out.println("Error al leer el archivo de consultas: " + e.getMessage());
+        }
+        return null; // si no hay consultas o hubo un error, devolvemos null!!
+    }
+
+    public Duenio obtenerUltimoDuenio() {
+        // metodo que obtiene el último dueño registrado en el txt de consultas ->
+        String ultimaLinea = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/datos/consultas.txt"))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                ultimaLinea = linea; // al finalizar el while, ultimaLinea tendrá la última línea del archivo!!
+            }
+            if (ultimaLinea != null) {
+                String[] partes = ultimaLinea.split(","); // devuelve una lista donde cada índice es un
+                // campo/atributo del registro de consulta!!
+                String nombreDuenio = partes[2];
+                String apellidoDuenio = partes[3];
+                String numTelefono = partes[4];
+                String email = partes[5];
+                return new Duenio(nombreDuenio, apellidoDuenio, numTelefono, email); // retornamos el duenio
+                // creado!!
+            }
+        } catch (java.io.IOException e) {
             System.out.println("Error al leer el archivo de consultas: " + e.getMessage());
         }
         return null; // si no hay consultas o hubo un error, devolvemos null!!
