@@ -12,6 +12,4 @@ public class Factura {
         this.tratamiento = tratamiento;
         this.montoTotal = tratamiento.getCosto(); // coste del tratamiento asignado en la factura
     }
-
-
 }

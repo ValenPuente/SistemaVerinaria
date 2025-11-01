@@ -23,8 +23,17 @@ public class GestorConsulta {
 
     public boolean guardarConsulta(Consulta consulta){
         // metodo que guarda la consulta en el txt de consultas ->
-        String linea = consulta.getVeterinario().getNombre() + "," + consulta.getVeterinario().getApellido() + "," + consulta.getMascota().getTipo() + "," +
-                consulta.getMascota().getNombre() + "," + consulta.getFecha() + "," + consulta.getTratamiento().name();
+        String linea = consulta.getVeterinario().getNombre() +
+                "," + consulta.getVeterinario().getApellido() +
+                "," + consulta.getMascota().getDuenio().getNombre() + ","
+                + consulta.getMascota().getDuenio().getApellido() + ","
+                + consulta.getMascota().getDuenio().getNumTelefono() + ","
+                + consulta.getMascota().getDuenio().getEmail() + ","
+                + consulta.getMascota().getTipo() + ","
+                + consulta.getMascota().getNombre() + ","
+                + consulta.getFecha() + ","
+                + consulta.getTratamiento().name();
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/datos/consultas.txt", true))){
             writer.write(linea);
             writer.newLine(); // salto de línea para la próxima consulta!!

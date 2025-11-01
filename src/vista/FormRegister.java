@@ -39,13 +39,6 @@ public class FormRegister extends JFrame {
                 // lo mostramos en un label ->
                 lblMensaje.setText(retorno);
 
-                try {
-                    Thread.sleep(5000); // pausa de 5 segundos (5000 milisegundos)
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-
-
                 if (lblMensaje.getText().equals("Veterinario registrado exitosamente")) {
                     // cerramos ventana actual -->
                     dispose();

@@ -28,17 +28,13 @@ public class FormPago extends JFrame {
                 String retorno = controladorPago.pagarPayPal();
                 lblMensajePago.setText(retorno);
 
-                // esperamos unos segundos para que el usuario pueda ver el mensaje de confirmación
-                try {
-                    Thread.sleep(3000); // pausa de 3 segundos (3000 milisegundos)
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
 
                 // cerramos ventana una vez realizado el pago y abrimos la ventana para
                 // el envío --->
                 dispose();
                 // y abrimos la ventana de FormContacto
+                FormContacto formContacto = new FormContacto();
+                formContacto.setVisible(true); // en true para que se vea la ventana!!
 
             }
         });
@@ -50,13 +46,6 @@ public class FormPago extends JFrame {
                 // llamamos al metodo del controladorPagos para procesar el pago por Tareta de credito!
                 String retorno = controladorPago.pagarTarjetaCredito();
                 lblMensajePago.setText(retorno);
-
-                // esperamos unos segundos para que el usuario pueda ver el mensaje de confirmación
-                try {
-                    Thread.sleep(3000); // pausa de 3 segundos (3000 milisegundos)
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
 
                 // cerramos ventana una vez realizado el pago y abrimos la ventana para
                 // el envío --->
