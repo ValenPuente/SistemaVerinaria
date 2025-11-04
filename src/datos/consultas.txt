@@ -1,0 +1,2 @@
+Valentin,Puente,Franco,Lan,1130452005,franco@gmail.com,Perro,Claudio,2025-11-24,URGENCIA
+Valentin,Puente,Gonzalo,Gomez,1130452006,gonza@gmail.com,Gato,Jorge,2025-11-21,CIRUGIA_MAYOR

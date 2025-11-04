@@ -1,6 +1,7 @@
 package vista;
 
 import controlador.ControladorEnvio;
+import modelo.MetodosEnvio;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,12 +18,21 @@ public class FormContacto extends JFrame{
     ControladorEnvio controladorEnvio = new ControladorEnvio();
 
     public FormContacto() {
+
+        inicializar();
+
+
         btnEmail.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // acción al presionar el botón de Email
-                // llamamos al metodo del controlador -->
-                String retorno = controladorEnvio.enviarFacturaEmail();
+
+                // creamos instancia de enum EMAIL -->
+                MetodosEnvio metodoEnvio = MetodosEnvio.EMAIL;
+
+                // llamamos al metodo del controlador pasando el enum como parámetro -->
+                String retorno = controladorEnvio.enviarConMetodoEnvio(metodoEnvio);
+
                 lblMensajeContacto.setText(retorno);
 
                 // una vez se envió el email, volvemos a la ventana principal!
@@ -35,15 +45,22 @@ public class FormContacto extends JFrame{
         btnTelefono.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // acción al presionar el botón de Teléfono
-                // llamamos al metodo del controlador -->
-                String retorno = controladorEnvio.enviarFacturaSMS();
+                // acción al presionar el botón de SMS
+
+                // creamos instancia de enum SMS -->
+                MetodosEnvio metodoEnvio = MetodosEnvio.SMS;
+
+                // llamamos al metodo del controlador pasando el enum como parámetro -->
+                String retorno = controladorEnvio.enviarConMetodoEnvio(metodoEnvio);
+
                 lblMensajeContacto.setText(retorno);
 
-                // una vez se envió el SMS, volvemos a la ventana principal!
-                dispose(); // cerramos la ventana actual
+                // una vez se envió el email, volvemos a la ventana principal!
+                /* dispose(); // cerramos la ventana actual
                 FormMain formMain = new FormMain();
                 formMain.setVisible(true); // en true para que se vea la ventana!!
+
+                 */
             }
         });
     }

@@ -55,7 +55,7 @@ public class GestorConsulta {
             if (ultimaLinea != null) {
                 String[] partes = ultimaLinea.split(","); // devuelve una lista donde cada índice es un
                 // campo/atributo del registro de consulta!!
-                String tratamientoStr = partes[5]; // el tratamiento está en la posición 5 del array!!!
+                String tratamientoStr = partes[9]; // el tratamiento está en la posición 9 del array!!!
                 return Tratamiento.valueOf(tratamientoStr); // convertimos el String a enum Tratamiento!!
             }
         } catch (java.io.IOException e) {
