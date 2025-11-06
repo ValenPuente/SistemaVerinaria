@@ -3,7 +3,8 @@ package vista;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import controlador.ControladorPago;
+
+import controlador.ControladorFactura;
 import modelo.MetodosPago;
 
 public class FormPago extends JFrame {
@@ -15,7 +16,7 @@ public class FormPago extends JFrame {
 
 
     // instancia de controlador Pago para usar sus métodos ->
-    ControladorPago controladorPago = new ControladorPago();
+    ControladorFactura controladorFactura = new ControladorFactura();
 
 
     public FormPago(){
@@ -31,7 +32,7 @@ public class FormPago extends JFrame {
                 MetodosPago metodoPago = MetodosPago.PAYPAL;
 
                 // y lo pasamos como parámetro al metodo del controlador -->
-                String retorno = controladorPago.pagarConMetodoPago(metodoPago);
+                String retorno = controladorFactura.pagarConMetodoPago(metodoPago);
                 lblMensajePago.setText(retorno);
 
 
@@ -54,7 +55,7 @@ public class FormPago extends JFrame {
                 MetodosPago metodoPago = MetodosPago.CREDITO;
 
                 // y lo pasamos como parámetro al metodo del controlador -->
-                String retorno = controladorPago.pagarConMetodoPago(metodoPago);
+                String retorno = controladorFactura.pagarConMetodoPago(metodoPago);
                 lblMensajePago.setText(retorno);
 
 

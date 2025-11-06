@@ -2,6 +2,6 @@ package modelo;
 
 public interface INotificador {
 
-    public String enviarFactura(Duenio duenio);
+    public String enviarFactura(Factura factura);
 
 }

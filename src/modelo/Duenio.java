@@ -1,7 +1,5 @@
 package modelo;
 
-import java.util.ArrayList;
-
 public class Duenio extends Persona {
     // tiene como atributos propios -->
     private String numTelefono;

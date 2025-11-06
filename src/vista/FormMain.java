@@ -60,7 +60,7 @@ public class FormMain extends JFrame {
                     return;
                 }
 
-                // 4) si SÍ pasa, seguir con el flujo de guardado
+                // 4) si SÍ pasa, seguir con el flujo de guardado de la consulta dentro de los archivos txt!
                 String retorno = controladorConsultas.registrarConsulta(
                         nombreDuenio, apellidoDuenio, numTelefono, email,
                         tipoMascota, nombreMascota, edadMascota,

@@ -1,6 +1,6 @@
 package vista;
 
-import controlador.ControladorEnvio;
+import controlador.ControladorFactura;
 import modelo.MetodosEnvio;
 
 import javax.swing.*;
@@ -15,7 +15,7 @@ public class FormContacto extends JFrame{
     private JPanel pnlCentral;
 
     // instancia de la clase ControladorEnvio para usar sus métodos ->
-    ControladorEnvio controladorEnvio = new ControladorEnvio();
+    ControladorFactura controladorFactura = new ControladorFactura();
 
     public FormContacto() {
 
@@ -31,7 +31,7 @@ public class FormContacto extends JFrame{
                 MetodosEnvio metodoEnvio = MetodosEnvio.EMAIL;
 
                 // llamamos al metodo del controlador pasando el enum como parámetro -->
-                String retorno = controladorEnvio.enviarConMetodoEnvio(metodoEnvio);
+                String retorno = controladorFactura.enviarConMetodoEnvio(metodoEnvio);
 
                 lblMensajeContacto.setText(retorno);
 
@@ -51,16 +51,15 @@ public class FormContacto extends JFrame{
                 MetodosEnvio metodoEnvio = MetodosEnvio.SMS;
 
                 // llamamos al metodo del controlador pasando el enum como parámetro -->
-                String retorno = controladorEnvio.enviarConMetodoEnvio(metodoEnvio);
+                String retorno = controladorFactura.enviarConMetodoEnvio(metodoEnvio);
 
                 lblMensajeContacto.setText(retorno);
 
                 // una vez se envió el email, volvemos a la ventana principal!
-                /* dispose(); // cerramos la ventana actual
+                dispose(); // cerramos la ventana actual
                 FormMain formMain = new FormMain();
                 formMain.setVisible(true); // en true para que se vea la ventana!!
 
-                 */
             }
         });
     }

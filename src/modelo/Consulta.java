@@ -36,4 +36,5 @@ public class Consulta {
     public Tratamiento getTratamiento() {
         return tratamiento;
     }
+    public String getCondicion() { return condicion; }
 }

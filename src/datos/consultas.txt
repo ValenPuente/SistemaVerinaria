@@ -2,3 +2,4 @@ Valentin,Puente,Franco,Lan,1130452005,franco@gmail.com,Perro,Claudio,2025-11-24,
 Valentin,Puente,Gonzalo,Gomez,1130452006,gonza@gmail.com,Gato,Jorge,2025-11-21,CIRUGIA_MAYOR
 Samuel,De Luque,Samuel ,De Luque,+54 9 11 3045-2005,samueldeluque@gmail.com,Caniche,Valentin,2025-11-25,VACUNACION
 Samuel,De Luque,Samuel,De luque,12345678,samueldeluque@gmail.com,salchicha,TREMENDO,2025-11-17,CIRUGIA_MAYOR
+Valentin,Puente,Joaquin,Marolda,+1130452005,joaco@gmail.com,Gato,Luis,2025-11-25,CONSULTA_GENERAL

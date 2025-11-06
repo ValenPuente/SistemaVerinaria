@@ -2,14 +2,15 @@ package modelo;
 
 import java.util.regex.Pattern;
 
-public final class ValidadorConsulta {
-    private static final Pattern EMAIL = Pattern.compile("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
+public class ValidadorConsulta {
+    private static final Pattern EMAIL = Pattern.compile("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"); // en final para
+    // que cuando se defina el valor del atributo no pueda cambiarse
     private static final Pattern PHONE = Pattern.compile("^[0-9+()\\-\\s]{6,20}$");
     private static final Pattern DIGITS = Pattern.compile("^\\d+$");
 
     public ValidadorConsulta() { }
 
-    // devuelve mensaje de error específico o null si todo OK
+    // devuelve mensaje de error específico o null dependiendo si está OK
     public String validarConMensaje(
             String nombreDuenio, String apellidoDuenio,
             String telefono, String email,
@@ -34,7 +35,7 @@ public final class ValidadorConsulta {
         return null; // todo OK
     }
 
-    // Conserva el método boolean por compatibilidad, usando validarConMensaje
+    // Conserva el metodo boolean por compatibilidad, usando validarConMensaje
     public boolean validar(
             String nombreDuenio, String apellidoDuenio,
             String telefono, String email,

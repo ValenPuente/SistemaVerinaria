@@ -15,8 +15,8 @@ public class ControladorVeterinarios {
     }
 
 
-    public String registrarVeterinario(String idEmpleado, String nombre, String apellido, String clave) { // recibe como
-        // parámetro los datos ingresados por el usuario!
+    public String registrarVeterinario(String idEmpleado, String nombre, String apellido, String clave) {
+        // recibe como parámetro los datos ingresados por el usuario!
         // primero verificamos que los datos no estén vacíos!!
         if (idEmpleado.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || clave.isEmpty()) {
             return "ERROR: Todos los campos son obligatorios";

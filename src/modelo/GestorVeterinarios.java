@@ -19,7 +19,7 @@ public class GestorVeterinarios {
             return false;
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/datos/veterinariosLogs.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/datos/veterinariosLogs.txt", true))) {
             writer.write(linea1); // escribimos la línea en el archivo!!
             // y añadimos un salto de línea al final para el próximo registro
             writer.newLine();
@@ -30,7 +30,7 @@ public class GestorVeterinarios {
         }
 
         String linea2 = vet.getNombre() + "," + vet.getApellido();
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("src/datos/veterinarios.txt"))) {
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("src/datos/veterinarios.txt", true))) {
             writer.write(linea2); // escribimos la línea en el archivo!!
             // y añadimos un salto de línea al final para el próximo registro dentro del txt!!
             writer.newLine();
