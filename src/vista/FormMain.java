@@ -7,8 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FormMain extends JFrame{
-
+public class FormMain extends JFrame {
 
     private JPanel pnlPrincipal;
     private JPanel pnlSuperior;
@@ -25,9 +24,8 @@ public class FormMain extends JFrame{
     private JTextField txtTelefono;
     private JTextField txtEmail;
 
-    // creamos instancia de ControladorConsulta -->
+    // instancia del controlador
     ControladorConsultas controladorConsultas = new ControladorConsultas();
-
 
     public FormMain() {
         inicializar();
@@ -36,54 +34,63 @@ public class FormMain extends JFrame{
         btnConfirmarConsulta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // acción que pasa al presionar el botón Confirmar!
-                // recuperamos los datos de los text -->
-                String nombreDuenio = txtNombre.getText();
+                // 1) recuperar datos del formulario
+                String nombreDuenio   = txtNombre.getText();
                 String apellidoDuenio = txtApellido.getText();
-                String numTelefono = txtTelefono.getText();
-                String email = txtEmail.getText();
-                String tipoMascota = txtTipoMascota.getText();
-                String nombreMascota = txtNombreMascota.getText();
-                String edadMascota = txtEdadMascota.getText();
-                String condicion = txtProblematica.getText();
-                Tratamiento tratamientoSeleccionado = (Tratamiento) boxTratamiento.getSelectedItem();
-                // tratamientoSeleccionado debe ser del tipo enum Tratamiento!!
+                String numTelefono    = txtTelefono.getText();
+                String email          = txtEmail.getText();
+                String tipoMascota    = txtTipoMascota.getText();
+                String nombreMascota  = txtNombreMascota.getText();
+                String edadMascota    = txtEdadMascota.getText();
+                String condicion      = txtProblematica.getText();
+                Tratamiento tratamientoSeleccionado =
+                        (Tratamiento) boxTratamiento.getSelectedItem(); // enum Tratamiento
 
-                // llamamos al metodo del controladorConsultas para registrar la consulta
-                String retorno = controladorConsultas.registrarConsulta(nombreDuenio, apellidoDuenio, numTelefono, email, tipoMascota, nombreMascota, edadMascota, condicion, tratamientoSeleccionado);
+                // 2) VALIDAR a través del CONTROLADOR -> MODELO (mensaje específico o null)
+                String mensajeError = controladorConsultas.validarDatosConsulta(
+                        nombreDuenio, apellidoDuenio,
+                        numTelefono, email,
+                        tipoMascota, nombreMascota, edadMascota,
+                        condicion, tratamientoSeleccionado
+                );
+
+                // 3) si NO pasa, mostrar mensaje de error y retornar
+                if (mensajeError != null) {
+                    lblMensajeRegistroConsulta.setText(mensajeError);
+                    return;
+                }
+
+                // 4) si SÍ pasa, seguir con el flujo de guardado
+                String retorno = controladorConsultas.registrarConsulta(
+                        nombreDuenio, apellidoDuenio, numTelefono, email,
+                        tipoMascota, nombreMascota, edadMascota,
+                        condicion, tratamientoSeleccionado
+                );
                 lblMensajeRegistroConsulta.setText(retorno);
 
-
-                // esperamos unos segundos para que el usuario pueda ver el mensaje de confirmación
+                // (tu pausa de 2s para que se vea el mensaje)
                 try {
-                    Thread.sleep(2000); // pausa de 2 segundos (2000 milisegundos)
+                    Thread.sleep(2000);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
 
-
-                if (retorno.equals("Consulta registrada exitosamente.")){
-                    // ahora cerramos la ventana si se registró la consulta excitosamente -->
+                if ("Consulta registrada exitosamente.".equals(retorno)) {
                     dispose();
-                    // y tenemos que abrir una nueva vetana para mostrar el resumen de la consulta -->
-                    FormPago formPago= new FormPago();
+                    FormPago formPago = new FormPago();
                     formPago.setVisible(true);
                 }
-
             }
         });
     }
 
-    public void mostrarEnumTratamiento(){
+    public void mostrarEnumTratamiento() {
         boxTratamiento.setModel(new DefaultComboBoxModel<>(Tratamiento.values()));
-
-        // (Opcional) acción al seleccionar:
         boxTratamiento.addActionListener(e -> {
             Tratamiento seleccionado = (Tratamiento) boxTratamiento.getSelectedItem();
             System.out.println("Seleccionaste: " + seleccionado);
         });
     }
-
 
     public void inicializar() {
         setContentPane(pnlPrincipal);

@@ -1,7 +1,7 @@
 package modelo;
 
 public class Consulta {
-    // clase que surge de la relación muchos a muchos entre Veterinario y Mascota! Un veterinario puede tener
+    // clase que surge de la relación muchos a muchos entre Veterinario y Mascota! Un veterinario puede tenexr
     // muchas mascotas a su cargo y una mascota puede ser atendida por varios veterinarios! Para guardar datos
     // extra de esa relación de asociación muchos a muchos creamos esta clase intermedia!! Esto aplica el
     // principio GRASP de fabricación pura!!

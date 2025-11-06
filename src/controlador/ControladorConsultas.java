@@ -1,18 +1,36 @@
 package controlador;
 
 import modelo.*;
+import modelo.ValidadorConsulta;
+import modelo.Tratamiento;
 
 public class ControladorConsultas {
     // intermediario entre FormMain y las clases de la capa modelo!
     // creamos instancias de las clases de la capa modelo ->
     GestorConsulta gestorConsulta = new GestorConsulta();
     GestorVeterinarios gestorVeterinarios = new GestorVeterinarios();
+    private final ValidadorConsulta validadorConsulta = new ValidadorConsulta();
 
     // constructor vacío ->
     public ControladorConsultas() {
     }
-    // metodo que registra la consulta al txt de consultas -->
 
+    // devuelve mensaje de error específico o null si todo está bien
+    public String validarDatosConsulta(
+            String nombreDuenio, String apellidoDuenio,
+            String telefono, String email,
+            String tipoMascota, String nombreMascota, String edadMascota,
+            String condicion, Tratamiento tratamiento
+    ) {
+        return validadorConsulta.validarConMensaje(
+                nombreDuenio, apellidoDuenio,
+                telefono, email,
+                tipoMascota, nombreMascota, edadMascota,
+                condicion, tratamiento
+        );
+    }
+
+    // metodo que registra la consulta al txt de consultas -->
     public String registrarConsulta(String nombreDuenio, String apellidoDuenio, String numTelefono, String email, String tipoMascota, String nombreMascota, String edadMascota, String condicion, Tratamiento tratamientoSeleccionado) {
         // recibimos como parámetro todos los datos que se ponen en la ventana
 
@@ -44,4 +62,5 @@ public class ControladorConsultas {
             return "ERROR: No se pudo registrar la consulta.";
         }
     }
+
 }
