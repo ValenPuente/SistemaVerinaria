@@ -36,6 +36,8 @@ public class FormPago extends JFrame {
                 lblMensajePago.setText(retorno);
 
 
+
+
                 // cerramos ventana una vez realizado el pago y abrimos la ventana para
                 // el envío --->
                 dispose();

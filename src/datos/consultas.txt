@@ -3,3 +3,6 @@ Valentin,Puente,Gonzalo,Gomez,1130452006,gonza@gmail.com,Gato,Jorge,2025-11-21,C
 Samuel,De Luque,Samuel ,De Luque,+54 9 11 3045-2005,samueldeluque@gmail.com,Caniche,Valentin,2025-11-25,VACUNACION
 Samuel,De Luque,Samuel,De luque,12345678,samueldeluque@gmail.com,salchicha,TREMENDO,2025-11-17,CIRUGIA_MAYOR
 Valentin,Puente,Joaquin,Marolda,+1130452005,joaco@gmail.com,Gato,Luis,2025-11-25,CONSULTA_GENERAL
+Valentin,Puente,Valentin,Puente,1120355323412,valentin@gmail.com,pepe,blablba,2025-11-23,VACUNACION
+Valentin,Puente,valentin,puente,123456789,valenitn@puente.com.ar,puente,valentin,2025-11-08,VACUNACION
+Samuel,De Luque,gonzalo,gomez,1231411,gonzalo@gomez.com.ar,12313,gonzalo,2025-11-09,VACUNACION

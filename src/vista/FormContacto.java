@@ -7,65 +7,55 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FormContacto extends JFrame{
+public class FormContacto extends JFrame {
     private JPanel pnlPrincipal;
     private JLabel lblMensajeContacto;
     private JButton btnEmail;
     private JButton btnTelefono;
     private JPanel pnlCentral;
 
-    // instancia de la clase ControladorEnvio para usar sus métodos ->
+    // instancia del controlador
     ControladorFactura controladorFactura = new ControladorFactura();
 
     public FormContacto() {
-
         inicializar();
-
 
         btnEmail.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // acción al presionar el botón de Email
-
-                // creamos instancia de enum EMAIL -->
                 MetodosEnvio metodoEnvio = MetodosEnvio.EMAIL;
-
-                // llamamos al metodo del controlador pasando el enum como parámetro -->
                 String retorno = controladorFactura.enviarConMetodoEnvio(metodoEnvio);
-
-                lblMensajeContacto.setText(retorno);
-
-                // una vez se envió el email, volvemos a la ventana principal!
-                dispose(); // cerramos la ventana actual
-                FormMain formMain = new FormMain();
-                formMain.setVisible(true); // en true para que se vea la ventana!!
+                mostrarMensajeYVolver(retorno); // <-- muestra 3s y vuelve
             }
         });
 
         btnTelefono.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // acción al presionar el botón de SMS
-
-                // creamos instancia de enum SMS -->
                 MetodosEnvio metodoEnvio = MetodosEnvio.SMS;
-
-                // llamamos al metodo del controlador pasando el enum como parámetro -->
                 String retorno = controladorFactura.enviarConMetodoEnvio(metodoEnvio);
-
-                lblMensajeContacto.setText(retorno);
-
-                // una vez se envió el email, volvemos a la ventana principal!
-                dispose(); // cerramos la ventana actual
-                FormMain formMain = new FormMain();
-                formMain.setVisible(true); // en true para que se vea la ventana!!
-
+                mostrarMensajeYVolver(retorno); // <-- muestra 3s y vuelve
             }
         });
     }
 
+    private void mostrarMensajeYVolver(String mensaje) {
+        // mostrar el mensaje y deshabilitar botones para evitar doble envío
+        lblMensajeContacto.setText(mensaje);
+        btnEmail.setEnabled(false);
+        btnTelefono.setEnabled(false);
+
+        // esperar 3s SIN bloquear la UI y luego cerrar y volver al main
+        javax.swing.Timer t = new javax.swing.Timer(3000, ev -> {
+            dispose();                    // cerrar esta ventana
+            new FormMain().setVisible(true); // volver al formulario principal
+        });
+        t.setRepeats(false);
+        t.start();
+    }
+
     public void inicializar() {
-        setContentPane(pnlCentral);
+        setContentPane(pnlCentral); // si querés usar pnlPrincipal, cambialo acá
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 400);
         setLocationRelativeTo(null);
