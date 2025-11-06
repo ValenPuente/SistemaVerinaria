@@ -25,6 +25,12 @@ public class ControladorVeterinarios {
         // creamos instancia de veterinario ->
         Veterinario vet = new Veterinario(idEmpleado, nombre, apellido, clave);
 
+        // vericamos primero si ya existe ese id de empleado!!
+        if (gestorVeterinarios.validaridEmpleado(idEmpleado)) {
+            return "ERROR: El ID de empleado ya está registrado";
+        }
+
+        // si no existe, procedemos a registrarlo!!
         // llamamos a metodo del gestorVeterinarios para verificar primero si ya se encuentra registrado el
         // veterinario!
         if (!gestorVeterinarios.verificarVeterinarioExistente(vet)) { // verificamos primero si ya existe!

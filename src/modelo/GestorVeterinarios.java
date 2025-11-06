@@ -99,13 +99,13 @@ public class GestorVeterinarios {
             while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(","); // dividimos la línea en partes
                 if (datos[0].equals(idEmpleado)) {
-                    return false; // veterinario ya existe
+                    return true; // veterinario ya existe
                 }
             }
         } catch (IOException e) { // si llegamos aquí es porque hubo un error al leer el archivo!!
             System.out.println("Error al leer el archivo de veterinarios: " + e.getMessage());
         }
-        return true;
+        return false; // significa que el idEmpleado no existe!!!!
     }
 
 

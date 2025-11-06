@@ -1,14 +1,1 @@
-Valentin,Puente,Franco,Lan,1130452005,franco@gmail.com,Perro,Claudio,2025-11-24,URGENCIA
-Valentin,Puente,Gonzalo,Gomez,1130452006,gonza@gmail.com,Gato,Jorge,2025-11-21,CIRUGIA_MAYOR
-Samuel,De Luque,Samuel ,De Luque,+54 9 11 3045-2005,samueldeluque@gmail.com,Caniche,Valentin,2025-11-25,VACUNACION
-Samuel,De Luque,Samuel,De luque,12345678,samueldeluque@gmail.com,salchicha,TREMENDO,2025-11-17,CIRUGIA_MAYOR
-Valentin,Puente,Joaquin,Marolda,+1130452005,joaco@gmail.com,Gato,Luis,2025-11-25,CONSULTA_GENERAL
-Valentin,Puente,Valentin,Puente,1120355323412,valentin@gmail.com,pepe,blablba,2025-11-23,VACUNACION
-Valentin,Puente,valentin,puente,123456789,valenitn@puente.com.ar,puente,valentin,2025-11-08,VACUNACION
-Samuel,De Luque,gonzalo,gomez,1231411,gonzalo@gomez.com.ar,12313,gonzalo,2025-11-09,VACUNACION
-Samuel,De Luque,Valentin,Puente,12345678,valentin@puente.com,salchicha,valentin,2025-11-10,VACUNACION
-Samuel,De Luque,valentin,puente,111111111,valen@gmail.com,valentin,valentin,2025-12-01,VACUNACION
-Samuel,De Luque,valentin,valentin,123123123,valentin@gmail.com,valentin,valentin,2025-12-06,VACUNACION
-Valentin,Puente,valentin,valentin,123123123,valentin@gmail.com,valentin,valentin,2025-11-26,VACUNACION
-Samuel,De Luque,valentin,valentin,123123123,valentin@gmail.com,valentin,valentin,2025-11-13,CIRUGIA_MAYOR
-Samuel,De Luque,valentin,valentin,123123123,valentin@gmail.com,valentin,valentin,2025-11-27,LIMPIEZA_DENTAL
+Samuel,De Luque,Joaquin,Marolda,+541130452005,joaquinMarolda@gmail.com,Perro,Spiky,2025-11-25,URGENCIA
