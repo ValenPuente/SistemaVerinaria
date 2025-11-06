@@ -6,3 +6,9 @@ Valentin,Puente,Joaquin,Marolda,+1130452005,joaco@gmail.com,Gato,Luis,2025-11-25
 Valentin,Puente,Valentin,Puente,1120355323412,valentin@gmail.com,pepe,blablba,2025-11-23,VACUNACION
 Valentin,Puente,valentin,puente,123456789,valenitn@puente.com.ar,puente,valentin,2025-11-08,VACUNACION
 Samuel,De Luque,gonzalo,gomez,1231411,gonzalo@gomez.com.ar,12313,gonzalo,2025-11-09,VACUNACION
+Samuel,De Luque,Valentin,Puente,12345678,valentin@puente.com,salchicha,valentin,2025-11-10,VACUNACION
+Samuel,De Luque,valentin,puente,111111111,valen@gmail.com,valentin,valentin,2025-12-01,VACUNACION
+Samuel,De Luque,valentin,valentin,123123123,valentin@gmail.com,valentin,valentin,2025-12-06,VACUNACION
+Valentin,Puente,valentin,valentin,123123123,valentin@gmail.com,valentin,valentin,2025-11-26,VACUNACION
+Samuel,De Luque,valentin,valentin,123123123,valentin@gmail.com,valentin,valentin,2025-11-13,CIRUGIA_MAYOR
+Samuel,De Luque,valentin,valentin,123123123,valentin@gmail.com,valentin,valentin,2025-11-27,LIMPIEZA_DENTAL

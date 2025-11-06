@@ -14,66 +14,50 @@ public class FormPago extends JFrame {
     private JLabel lblMensajePago;
     private JPanel pnlPrincipal;
 
-
-    // instancia de controlador Pago para usar sus métodos ->
+    // instancia de controlador
     ControladorFactura controladorFactura = new ControladorFactura();
-
 
     public FormPago(){
         inicializar();
 
-
         btnPaypal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // acción que ocurre al presionar el botón de Paypal
-
-                // elegimos de instancia de enum PAYPAL -->
                 MetodosPago metodoPago = MetodosPago.PAYPAL;
-
-                // y lo pasamos como parámetro al metodo del controlador -->
                 String retorno = controladorFactura.pagarConMetodoPago(metodoPago);
-                lblMensajePago.setText(retorno);
 
-
-
-
-                // cerramos ventana una vez realizado el pago y abrimos la ventana para
-                // el envío --->
-                dispose();
-                // y abrimos la ventana de FormContacto
-                FormContacto formContacto = new FormContacto();
-                formContacto.setVisible(true); // en true para que se vea la ventana!!
-
+                mostrarMensajeYSeguir(retorno); // <-- muestra 3s y luego navega
             }
         });
 
         btnTarjeta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // acción que ocurre al presionar el botón de Crédito
-
-                // elegimos de instancia de enum CREDITO -->
                 MetodosPago metodoPago = MetodosPago.CREDITO;
-
-                // y lo pasamos como parámetro al metodo del controlador -->
                 String retorno = controladorFactura.pagarConMetodoPago(metodoPago);
-                lblMensajePago.setText(retorno);
 
-
-                // cerramos ventana una vez realizado el pago y abrimos la ventana para
-                // el envío --->
-                dispose();
-                // y abrimos la ventana de FormContacto
-                FormContacto formContacto = new FormContacto();
-                formContacto.setVisible(true); // en true para que se vea la ventana!!
+                mostrarMensajeYSeguir(retorno); // <-- muestra 3s y luego navega
             }
         });
     }
 
+    private void mostrarMensajeYSeguir(String mensaje){
+        // mostrar el mensaje y deshabilitar botones
+        lblMensajePago.setText(mensaje);
+        btnPaypal.setEnabled(false);
+        btnTarjeta.setEnabled(false);
+
+        // esperar 3s sin bloquear la UI y entonces cerrar y abrir FormContacto
+        javax.swing.Timer t = new javax.swing.Timer(3000, ev -> {
+            dispose();
+            new FormContacto().setVisible(true);
+        });
+        t.setRepeats(false);
+        t.start();
+    }
 
     public void inicializar() {
-        setContentPane(pnlPrincipal);
+        setContentPane(pnlPrincipal);   // asegúrate de que lblMensajePago esté dentro de pnlPrincipal
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 400);
         setLocationRelativeTo(null);
