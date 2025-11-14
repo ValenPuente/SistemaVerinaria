@@ -8,6 +8,7 @@ public class ControladorFactura {
     GestorConsulta gestorConsulta = new GestorConsulta();
     GestorFactura gestorFactura = new GestorFactura();
 
+
     public String pagarConMetodoPago(MetodosPago metodoPago){
 
         // en base a la constante que recibimos del enum, ya sea PAYPAL o CREDITO, llamamos

@@ -1,7 +1,6 @@
 package controlador;
 
 import modelo.*;
-import modelo.ValidadorConsulta;
 import modelo.Tratamiento;
 
 public class ControladorConsultas {
@@ -9,20 +8,19 @@ public class ControladorConsultas {
     // creamos instancias de las clases de la capa modelo ->
     GestorConsulta gestorConsulta = new GestorConsulta();
     GestorVeterinarios gestorVeterinarios = new GestorVeterinarios();
-    private final ValidadorConsulta validadorConsulta = new ValidadorConsulta();
 
     // constructor vacío ->
     public ControladorConsultas() {
     }
 
-    // devuelve mensaje de error específico o null si todo está bien
+    // devuelve mensaje de error específico o null si está bien
     public String validarDatosConsulta(
             String nombreDuenio, String apellidoDuenio,
             String telefono, String email,
             String tipoMascota, String nombreMascota, String edadMascota,
             String condicion, Tratamiento tratamiento
     ) {
-        return validadorConsulta.validarConMensaje(
+        return gestorConsulta.validar(
                 nombreDuenio, apellidoDuenio,
                 telefono, email,
                 tipoMascota, nombreMascota, edadMascota,
@@ -62,5 +60,4 @@ public class ControladorConsultas {
             return "ERROR: No se pudo registrar la consulta.";
         }
     }
-
 }

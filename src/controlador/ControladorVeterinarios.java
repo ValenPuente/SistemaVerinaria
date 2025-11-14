@@ -45,6 +45,7 @@ public class ControladorVeterinarios {
             return "ERROR: El veterinario ya está registrado";
         }
     }
+
     public String iniciarSesionVeterinario(String idEmpleado, String nombre, String apellido, String clave) {
         // metodo para el inicio de sesión de los veterinarios!!
         // primero verificamos que los datos no estén vacíos!!
@@ -60,7 +61,5 @@ public class ControladorVeterinarios {
             return "ERROR: Credenciales incorrectas o veterinario no registrado";
         }
     }
-
-
 }
 

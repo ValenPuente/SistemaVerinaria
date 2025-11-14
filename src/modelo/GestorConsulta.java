@@ -1,11 +1,44 @@
 package modelo;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
+import java.util.regex.Pattern;
 
 public class GestorConsulta {
+
+    // atributos para validar el formato de los campos en la vista consulta que usará el metodo validar!-->
+    private static final Pattern EMAIL = Pattern.compile("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"); // verifica
+    // que tenga un @, y que termina en .!
+    private static final Pattern PHONE = Pattern.compile("^[0-9+()\\-\\s]{6,20}$"); // verifica que
+    // tenga entre 6 y 20 caracteres
+    private static final Pattern DIGITS = Pattern.compile("^\\d+$"); // solo dígitos del 0 al 9
+    private boolean blank(String s){ return s == null || s.trim().isEmpty(); } // metodo para
+    // verificar si un String que se recupera de los datos que pone el usuario está vacío o es nulo!!
+
+
+    // metodo para validar los datos ingresados en la vista consulta -->
+    public String validar(
+            String nombreDuenio, String apellidoDuenio,
+            String telefono, String email,
+            String tipoMascota, String nombreMascota, String edadMascota,
+            String condicion, Tratamiento tratamiento
+    ) {
+        if (blank(nombreDuenio)) return "ERROR: El nombre del dueño es obligatorio.";
+        if (blank(apellidoDuenio)) return "ERROR: El apellido del dueño es obligatorio.";
+        if (blank(telefono)) return "ERROR: El teléfono es obligatorio.";
+        if (!PHONE.matcher(telefono).matches()) return "ERROR: El teléfono tiene un formato inválido.";
+        if (blank(email)) return "ERROR: El email es obligatorio.";
+        if (!EMAIL.matcher(email).matches()) return "ERROR: El email tiene un formato inválido.";
+        if (blank(tipoMascota)) return "ERROR: El tipo de mascota es obligatorio.";
+        if (blank(nombreMascota)) return "ERROR: El nombre de la mascota es obligatorio.";
+        if (blank(edadMascota)) return "ERROR: La edad de la mascota es obligatoria.";
+        if (!DIGITS.matcher(edadMascota).matches()) return "ERROR: La edad debe ser un número entero.";
+        try {
+            if (Integer.parseInt(edadMascota) < 0) return "ERROR: La edad no puede ser negativa.";
+        } catch (NumberFormatException e) { return "ERROR: La edad tiene un formato inválido."; }
+        if (blank(condicion)) return "ERROR: La condición/problema es obligatoria.";
+        if (tratamiento == null) return "ERROR: Debe seleccionar un tratamiento.";
+        return null;
+    }
 
     // metodo para generar día aleatorio del día -->
     public String generarFechaAleatoria(){
@@ -38,7 +71,7 @@ public class GestorConsulta {
             writer.write(linea);
             writer.newLine(); // salto de línea para la próxima consulta!!
             return true; // si llegamos acá es porque se guardó correctamente!!
-        } catch (java.io.IOException e){
+        } catch (IOException e){
             System.out.println("Error al escribir en el archivo de consultas: " + e.getMessage());
             return false; // hubo un error al guardar la consulta!!
         }
@@ -58,7 +91,7 @@ public class GestorConsulta {
                 String tratamientoStr = partes[9]; // el tratamiento está en la posición 9 del array!!!
                 return Tratamiento.valueOf(tratamientoStr); // convertimos el String a enum Tratamiento!!
             }
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             System.out.println("Error al leer el archivo de consultas: " + e.getMessage());
         }
         return null; // si no hay consultas o hubo un error, devolvemos null!!
@@ -82,7 +115,7 @@ public class GestorConsulta {
                 return new Duenio(nombreDuenio, apellidoDuenio, numTelefono, email); // retornamos el duenio
                 // creado!!
             }
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             System.out.println("Error al leer el archivo de consultas: " + e.getMessage());
         }
         return null; // si no hay consultas o hubo un error, devolvemos null!!
